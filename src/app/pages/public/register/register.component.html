@@ -17,31 +17,26 @@
       <div class="media-content">
         <div class="content">
           <form>
-            <div class="columns is-3">
-              <div class="column is-one-fifth field">
-                <div class="control has-icons-left">
-                  <div class="select">
-                    <select name="idPrefijo" id="idPrefijo" [(ngModel)]="user.idPrefijo"> 
-                      <option value="-1">Select one...</option>
-                      <option *ngFor="let prefijo of listaPrefijos" [value]="prefijo.id_prefijo">
-                        {{ prefijo.prefijo }}
-                      </option>
-                    </select>
-                  </div>
-                  <div class="icon is-small is-left">
-                    <i class="fas fa-globe"></i>
-                  </div>
+            <div class="field is-grouped">
+              <div class="control has-icons-left">
+                <div class="select">
+                  <select name="idPrefijo" id="idPrefijo" [(ngModel)]="user.idPrefijo"> 
+                    <option *ngFor="let prefijo of listaPrefijos" [value]="prefijo.id_prefijo">
+                      {{ prefijo.prefijo }}
+                    </option>
+                  </select>
+                </div>
+                <div class="icon is-small is-left">
+                  <i class="fas fa-globe"></i>
                 </div>
               </div>
-              <div class="column is-four-fifths field">
-                <p class="control has-icons-left">
-                  <input class="input" [(ngModel)]="user.telefono" type="text"
-                    placeholder="Telefono" name="telefono">
-                  <span class="icon is-small is-left">
-                    <i class="fas fa-lock"></i>
-                  </span>
-                </p>
-              </div>
+              <p class="control has-icons-left is-expanded">
+                <input class="input" [(ngModel)]="user.telefono" type="text"
+                  placeholder="Telefono" name="telefono">
+                <span class="icon is-small is-left">
+                  <i class="fas fa-lock"></i>
+                </span>
+              </p>
             </div>
             <!-- <div class="field">
               <p class="control has-icons-left">
