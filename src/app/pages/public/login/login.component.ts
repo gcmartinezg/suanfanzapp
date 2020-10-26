@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
   }
 
   doLogin() {
-    this.authService.login(this.user).subscribe(res => {
+    this.authService.loginMail(this.user).subscribe(res => {
       console.log(res);
       this.router.navigate(['home']);
     }, err => {
@@ -45,5 +45,4 @@ export class LoginComponent implements OnInit {
     });
     console.log(this.user);
   }
-
 }

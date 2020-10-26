@@ -39,7 +39,7 @@ export class LoginTelefonoComponent implements OnInit {
   }
 
   doLogin() {
-    this.authService.login(this.user).subscribe(res => {
+    this.authService.loginPhone(this.user).subscribe(res => {
       console.log(res);
       this.router.navigate(['home']);
     }, err => {

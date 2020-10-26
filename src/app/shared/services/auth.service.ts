@@ -16,13 +16,22 @@ export class AuthService {
     private httpClient: HttpClient
   ) { }
 
-  login(user: UserI):Observable<any> {
+  loginMail(user: UserI):Observable<any> {
     // const passKey = "suanfanzon";
     // if (user.contrasena === passKey) {
     //   this.user = user;
     //   window.localStorage.setItem('user', JSON.stringify(this.user));
     // }
-    return this.httpClient.post(environment.url_api+'user/login', user);
+    return this.httpClient.post(environment.url_api+'user/login-mail', user);
+  }
+
+  loginPhone(user: UserI):Observable<any> {
+    // const passKey = "suanfanzon";
+    // if (user.contrasena === passKey) {
+    //   this.user = user;
+    //   window.localStorage.setItem('user', JSON.stringify(this.user));
+    // }
+    return this.httpClient.post(environment.url_api+'user/login-phone', user);
   }
 
   isLogged() {
