@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserI } from 'src/app/shared/interfaces/UserI';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +13,21 @@ export class LoginComponent implements OnInit {
   title: string = "Hola Mundo";
   color: string = "red"
 
-  constructor(private router:Router) { }
+  user: UserI = {
+    correo:'',
+    nombre: '',
+    apellido: '',
+    contrasena: '',
+    telefono: 0,
+    idPrefijo: 0,
+    descripcion: '',
+    urlImagen: ''
+  };
+
+  constructor(
+    private router:Router,
+    private authService: AuthService
+    ) { }
 
   ngOnInit(): void {
   }
@@ -21,7 +37,13 @@ export class LoginComponent implements OnInit {
   }
 
   doLogin() {
-    console.log("logeado apá");
+    this.authService.login(this.user).subscribe(res => {
+      console.log(res);
+      this.router.navigate(['home']);
+    }, err => {
+      console.log(err);
+    });
+    console.log(this.user);
   }
 
 }
