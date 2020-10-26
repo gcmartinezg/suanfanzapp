@@ -1,4 +1,4 @@
 export interface PrefixI{
-    idPrefijo?: number;
-    prefix?: number;
+    id_prefijo?: number;
+    prefijo?: number;
 }
