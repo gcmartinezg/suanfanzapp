@@ -60,6 +60,7 @@ $titleFont: sfProTextMedium;
             .media-content {
                 .content {
                     .field {
+                        padding: 0px 10px;
                         .buttons {
                             .is-info {
                                 width: 100px;
@@ -69,6 +70,7 @@ $titleFont: sfProTextMedium;
                                 width: 140px;
                                 background: #03D755;
                             }
+                            
                         }
                     }
                 }
