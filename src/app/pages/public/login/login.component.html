@@ -10,6 +10,18 @@
       <div class="media-content">
         <div class="content">
           <div class="field">
+            <div class="control is-grouped">
+              <label class="radio">
+                <input id="mail" type="radio" name="foobar" (click)="setLoginMail($event);" checked>
+                Login using email
+              </label>
+              <label class="radio">
+                <input id="cellphone" type="radio" name="foobar" (click)="setLoginMail($event);">
+                Login using your cellphone number
+              </label>
+            </div>
+          </div>
+          <div *ngIf="isLoginMail; else loginPhone" class="field">
             <p class="control has-icons-left has-icons-right">
               <input class="input" name="correo" [(ngModel)]="user.correo" type="email" placeholder="Email">
               <span class="icon is-small is-left">
@@ -20,6 +32,29 @@
               </span>
             </p>
           </div>
+          <ng-template #loginPhone>
+            <div class="field is-grouped">
+              <div class="control has-icons-left">
+                <div class="select">
+                  <select name="idPrefijo" id="idPrefijo" [(ngModel)]="user.idPrefijo"> 
+                    <option *ngFor="let prefijo of listaPrefijos" [value]="prefijo.id_prefijo">
+                      {{ prefijo.prefijo }}
+                    </option>
+                  </select>
+                </div>
+                <div class="icon is-small is-left">
+                  <i class="fas fa-globe"></i>
+                </div>
+              </div>
+              <p class="control has-icons-left is-expanded">
+                <input class="input" [(ngModel)]="user.telefono" type="text"
+                  placeholder="Telefono" name="telefono">
+                <span class="icon is-small is-left">
+                  <i class="fas fa-lock"></i>
+                </span>
+              </p>
+            </div>
+          </ng-template>
           <div class="field">
             <p class="control has-icons-left">
               <input class="input" name="contrasena" [(ngModel)]="user.contrasena" type="password" placeholder="Password">
