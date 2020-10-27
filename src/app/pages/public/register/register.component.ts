@@ -5,6 +5,7 @@ import { PrefixI } from 'src/app/shared/interfaces/PrefixI';
 import { UserI } from 'src/app/shared/interfaces/UserI';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { PrefijoService } from 'src/app/shared/services/prefijo.service';
+import { RegistroService } from 'src/app/shared/services/registro.service';
 import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
@@ -26,7 +27,7 @@ export class RegisterComponent implements OnInit {
   user: UserI = {
     correo: '',
     contrasena: '',
-    telefono: 0,
+    telefono: null,
     idPrefijo: 1,
     nombre: '',
     apellido: '',
@@ -40,7 +41,8 @@ export class RegisterComponent implements OnInit {
     private router:Router, 
     private authService:AuthService,
     private prefijoService: PrefijoService,
-    private userService: UserService
+    private userService: UserService,
+    private registroService: RegistroService,
     ) { }
 
   
@@ -50,9 +52,46 @@ export class RegisterComponent implements OnInit {
     console.log(this.listaPrefijos);
   }
 
-  doRegister(e) {
+  async doRegister(e) {
     e.preventDefault();
 
+    if(this.user.correo.trim().length == 0){
+      return;
+    }
+    if(this.user.contrasena.trim().length == 0){
+      return;
+    }
+    if(this.user.telefono == null || this.user.telefono < 0){
+      return;
+    }
+    if(this.user.idPrefijo == null || this.user.idPrefijo < 0){
+      return;
+    }
+    if(this.user.nombre.trim().length == 0){
+      return;
+    }
+    if(this.user.apellido.trim().length == 0){
+      return;
+    }
+    if(this.user.descripcion.trim().length == 0){
+      return;
+    }
+    if(this.user.urlImagen.trim().length == 0){
+      return;
+    }  
+
+    const existingMail = await this.registroService.verifyMail(this.user).toPromise();
+    if(existingMail == true){
+      console.log('Mail existe');
+      return;
+    }
+    const existingPhone = await this.registroService.verifyPhone(this.user).toPromise();
+    console.log('existingmail: '+JSON.stringify(existingMail));
+    console.log('existingphone: '+JSON.stringify(existingPhone));
+    if(existingPhone == true){
+      console.log('Telefono existe');
+      return;
+    }
 
     console.log(this.user);
     this.userService.save(this.user).subscribe(res => {
