@@ -7,12 +7,19 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/public/login/login.component';
 import { RegisterComponent } from './pages/public/register/register.component';
+import { PortalComponent } from './pages/public/portal/portal.component';
+import { LoginTelefonoComponent } from './pages/public/login-telefono/login-telefono.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    PortalComponent,
+    LoginTelefonoComponent
+    
   ],
   imports: [
     BrowserModule,

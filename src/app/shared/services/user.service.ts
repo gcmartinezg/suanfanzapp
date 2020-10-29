@@ -17,4 +17,6 @@ export class UserService {
   save(user: UserI):Observable<any>{
     return this.httpClient.post(this.url+'user',  user);
   }
+
+
 }

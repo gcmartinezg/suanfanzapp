@@ -31,7 +31,7 @@
                 </div>
               </div>
               <p class="control has-icons-left is-expanded">
-                <input class="input" [(ngModel)]="user.telefono" type="text"
+                <input class="input" [(ngModel)]="user.telefono" type="number"
                   placeholder="Telefono" name="telefono">
                 <span class="icon is-small is-left">
                   <i class="fas fa-lock"></i>
@@ -76,14 +76,6 @@
             <div class="field">
               <p class="control has-icons-left">
                 <input class="input" name="apellido" [(ngModel)]="user.apellido" type="text" placeholder="Last Name">
-                <span class="icon is-small is-left">
-                  <i class="fas fa-lock"></i>
-                </span>
-              </p>
-            </div>
-            <div class="field">
-              <p class="control has-icons-left">
-                <input class="input" name="descripcion" [(ngModel)]="user.descripcion" type="text" placeholder="Description">
                 <span class="icon is-small is-left">
                   <i class="fas fa-lock"></i>
                 </span>
